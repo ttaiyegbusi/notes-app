@@ -17,12 +17,12 @@ export function Panel({ title, icon, children, className, flush }: PanelProps) {
   return (
     <section
       className={cn(
-        // Outer chrome — sits on the page bg with its own subtle fill
-        "h-full flex flex-col rounded-2xl bg-bg-subtle border border-border-subtle overflow-hidden",
+        // Outer tray — darker tint than the page, holds title + inner card
+        "h-full flex flex-col rounded-2xl bg-bg-subtle overflow-hidden",
         className
       )}
     >
-      <header className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
+      <header className="flex items-center justify-between px-5 pt-3.5 pb-2.5 shrink-0">
         <div className="flex items-center gap-2 text-fg-muted text-sm">
           {icon ?? <PanelIcon />}
           <span>{title}</span>
@@ -35,13 +35,13 @@ export function Panel({ title, icon, children, className, flush }: PanelProps) {
         </button>
       </header>
 
-      {/* Inner floating card — the lighter container with content */}
+      {/* Inner floating card — equal inset on all sides, lighter background */}
       <div className="flex-1 min-h-0 px-2 pb-2">
-        <div className="h-full rounded-xl bg-bg-elevated border border-border-subtle overflow-hidden flex flex-col">
+        <div className="h-full rounded-xl bg-bg-elevated overflow-hidden flex flex-col shadow-sm">
           {flush ? (
             <div className="flex-1 min-h-0">{children}</div>
           ) : (
-            <div className="flex-1 min-h-0 overflow-y-auto p-4">{children}</div>
+            <div className="flex-1 min-h-0 overflow-y-auto p-5">{children}</div>
           )}
         </div>
       </div>

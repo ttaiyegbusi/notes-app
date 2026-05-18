@@ -7,16 +7,16 @@
     /* Light mode — warm off-whites matching the screenshot */
     --bg: #f0eeea;
     --bg-elevated: #ffffff;
-    --bg-subtle: #ebe9e5;
-    --bg-hover: #e6e4e0;
+    --bg-subtle: #e3e0d9;
+    --bg-hover: #d8d5cd;
 
     --fg: #1a1a1a;
     --fg-muted: #5c5c5c;
     --fg-subtle: #8a8a85;
     --fg-faint: #b8b6b1;
 
-    --border: #d8d5cf;
-    --border-subtle: #e4e1db;
+    --border: #cfccc4;
+    --border-subtle: #ddd9d1;
 
     --accent: #1a1a1a;
     --accent-fg: #ffffff;
