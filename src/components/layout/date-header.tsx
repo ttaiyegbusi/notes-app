@@ -42,9 +42,9 @@ export function DateHeader() {
   const { day, dayNum, month } = formatDate(date);
 
   return (
-    <div className="flex flex-col items-center pt-8 pb-12 animate-fade-in">
+    <div className="flex flex-col items-center pt-2 pb-6 shrink-0 animate-fade-in">
       {weather && (
-        <div className="flex items-center gap-2 text-fg-muted text-sm mb-5">
+        <div className="flex items-center gap-2 text-fg-muted text-sm mb-3">
           <WeatherIcon condition={weather.condition} />
           <span>
             {weather.tempC}°C {weather.city}, {weather.region}
@@ -52,7 +52,7 @@ export function DateHeader() {
         </div>
       )}
 
-      <h1 className="flex items-baseline gap-4 text-5xl md:text-6xl tracking-tight">
+      <h1 className="flex items-baseline gap-4 text-4xl md:text-5xl tracking-tight">
         <span className="text-fg-faint font-light">{day}</span>
         <span className="text-fg font-medium tabular-nums">{dayNum}</span>
         <span className="text-fg font-medium">{month}</span>

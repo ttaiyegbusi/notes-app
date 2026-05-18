@@ -4,7 +4,7 @@ import { Dashboard } from "@/components/dashboard/dashboard";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="h-[100dvh] flex flex-col overflow-hidden">
       <TopNav />
       <DateHeader />
       <Dashboard />

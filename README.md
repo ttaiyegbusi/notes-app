@@ -121,4 +121,3 @@ The Supabase clients in `src/lib/supabase/` are already set up for both client a
 ## License
 
 Geist Mono is licensed under the SIL Open Font License — see `public/fonts/OFL.txt`.
-# notes

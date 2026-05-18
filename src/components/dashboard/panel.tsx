@@ -9,12 +9,20 @@ type PanelProps = {
   icon?: ReactNode;
   children: ReactNode;
   className?: string;
+  /** Set true for textarea-style panels where the inner card has no padding */
+  flush?: boolean;
 };
 
-export function Panel({ title, icon, children, className }: PanelProps) {
+export function Panel({ title, icon, children, className, flush }: PanelProps) {
   return (
-    <section className={cn("panel flex flex-col", className)}>
-      <header className="flex items-center justify-between px-5 py-3 border-b border-border-subtle">
+    <section
+      className={cn(
+        // Outer chrome — sits on the page bg with its own subtle fill
+        "h-full flex flex-col rounded-2xl bg-bg-subtle border border-border-subtle overflow-hidden",
+        className
+      )}
+    >
+      <header className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
         <div className="flex items-center gap-2 text-fg-muted text-sm">
           {icon ?? <PanelIcon />}
           <span>{title}</span>
@@ -26,7 +34,17 @@ export function Panel({ title, icon, children, className }: PanelProps) {
           <ChevronsUpDown size={14} strokeWidth={1.5} />
         </button>
       </header>
-      <div className="flex-1 min-h-0">{children}</div>
+
+      {/* Inner floating card — the lighter container with content */}
+      <div className="flex-1 min-h-0 px-2 pb-2">
+        <div className="h-full rounded-xl bg-bg-elevated border border-border-subtle overflow-hidden flex flex-col">
+          {flush ? (
+            <div className="flex-1 min-h-0">{children}</div>
+          ) : (
+            <div className="flex-1 min-h-0 overflow-y-auto p-4">{children}</div>
+          )}
+        </div>
+      </div>
     </section>
   );
 }

@@ -32,8 +32,8 @@ export function TodosPanel() {
   };
 
   return (
-    <Panel title="Todos" className="min-h-[440px]">
-      <div className="p-5 space-y-4">
+    <Panel title="Tasks">
+      <div className="space-y-4">
         {todos.map((todo) => (
           <TodoRow key={todo.id} todo={todo} onToggle={toggleTodo} />
         ))}

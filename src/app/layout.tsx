@@ -44,7 +44,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen antialiased">
+      <body className="h-[100dvh] overflow-hidden antialiased">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

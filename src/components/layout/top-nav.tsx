@@ -31,7 +31,7 @@ export function TopNav() {
   ];
 
   return (
-    <header className="px-6 pt-6 pb-2">
+    <header className="px-6 pt-4 pb-1 shrink-0">
       <div className="flex items-center justify-between gap-4">
         {/* Left cluster — window dots + Today pill + nav arrows + search */}
         <div className="flex items-center gap-4">
