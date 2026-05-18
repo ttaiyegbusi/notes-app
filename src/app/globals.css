@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode — warm off-whites matching the screenshot */
+    --bg: #f0eeea;
+    --bg-elevated: #ffffff;
+    --bg-subtle: #ebe9e5;
+    --bg-hover: #e6e4e0;
+
+    --fg: #1a1a1a;
+    --fg-muted: #5c5c5c;
+    --fg-subtle: #8a8a85;
+    --fg-faint: #b8b6b1;
+
+    --border: #d8d5cf;
+    --border-subtle: #e4e1db;
+
+    --accent: #1a1a1a;
+    --accent-fg: #ffffff;
+  }
+
+  .dark {
+    /* Dark mode — warm darks, not pure black */
+    --bg: #161514;
+    --bg-elevated: #1f1e1c;
+    --bg-subtle: #1a1918;
+    --bg-hover: #252320;
+
+    --fg: #f0eeea;
+    --fg-muted: #a8a6a0;
+    --fg-subtle: #6b6864;
+    --fg-faint: #3d3b38;
+
+    --border: #2e2c29;
+    --border-subtle: #252320;
+
+    --accent: #f0eeea;
+    --accent-fg: #161514;
+  }
+
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  html,
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--fg-faint);
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  /* Focus rings — subtle, on-brand */
+  *:focus-visible {
+    outline: 1px solid var(--fg-muted);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Disable default outlines on interactive elements when not keyboard-focused */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-border-subtle bg-bg-elevated;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  }
+
+  .pill {
+    @apply rounded-full border border-border-subtle bg-bg-elevated;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Checkbox styling */
+  .custom-checkbox {
+    @apply h-4 w-4 shrink-0 rounded border border-border bg-transparent
+           transition-colors cursor-pointer
+           hover:border-fg-muted
+           checked:bg-fg checked:border-fg
+           appearance-none relative;
+  }
+
+  .custom-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 5px;
+    border-left: 1.5px solid var(--bg-elevated);
+    border-bottom: 1.5px solid var(--bg-elevated);
+    transform: translate(-50%, -65%) rotate(-45deg);
+  }
+}
