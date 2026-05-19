@@ -9,8 +9,8 @@ import { useEffect, useRef, type RefObject } from "react";
 export function useDismissable<T extends HTMLElement>(
   open: boolean,
   onClose: () => void
-): RefObject<T | null> {
-  const ref = useRef<T>(null);
+): RefObject<T> {
+  const ref = useRef<T>(null) as RefObject<T>;
 
   useEffect(() => {
     if (!open) return;
