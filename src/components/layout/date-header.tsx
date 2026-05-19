@@ -42,9 +42,9 @@ export function DateHeader() {
   const { day, dayNum, month } = formatDate(date);
 
   return (
-    <div className="flex flex-col items-center pt-2 pb-6 shrink-0 animate-fade-in">
+    <div className="flex flex-col items-center pt-6 pb-10 shrink-0 animate-fade-in">
       {weather && (
-        <div className="flex items-center gap-2 text-fg-muted text-sm mb-3">
+        <div className="flex items-center gap-2 text-fg-muted text-sm mb-4">
           <WeatherIcon condition={weather.condition} />
           <span>
             {weather.tempC}°C {weather.city}, {weather.region}

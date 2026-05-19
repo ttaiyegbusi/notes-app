@@ -1,8 +1,9 @@
 "use client";
 
-import { ChevronsUpDown } from "lucide-react";
-import type { ReactNode } from "react";
+import { Maximize2 } from "lucide-react";
+import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Modal } from "@/components/ui/modal";
 
 type PanelProps = {
   title: string;
@@ -14,43 +15,57 @@ type PanelProps = {
 };
 
 export function Panel({ title, icon, children, className, flush }: PanelProps) {
-  return (
-    <section
-      className={cn(
-        // Outer tray — darker tint than the page, holds title + inner card
-        "h-full flex flex-col rounded-2xl bg-bg-subtle overflow-hidden",
-        className
-      )}
-    >
-      <header className="flex items-center justify-between px-5 pt-3.5 pb-2.5 shrink-0">
-        <div className="flex items-center gap-2 text-fg-muted text-sm">
-          {icon ?? <PanelIcon />}
-          <span>{title}</span>
-        </div>
-        <button
-          aria-label="Reorder panel"
-          className="text-fg-subtle hover:text-fg-muted transition-colors p-1 rounded"
-        >
-          <ChevronsUpDown size={14} strokeWidth={1.5} />
-        </button>
-      </header>
+  const [expanded, setExpanded] = useState(false);
+  const panelIcon = icon ?? <PanelIcon />;
 
-      {/* Inner floating card — equal inset on all sides, lighter background */}
-      <div className="flex-1 min-h-0 px-2 pb-2">
-        <div className="h-full rounded-xl bg-bg-elevated overflow-hidden flex flex-col shadow-sm">
-          {flush ? (
-            <div className="flex-1 min-h-0">{children}</div>
-          ) : (
-            <div className="flex-1 min-h-0 overflow-y-auto p-5">{children}</div>
-          )}
+  return (
+    <>
+      <section
+        className={cn(
+          // Outer tray — darker tint than the page, holds title + inner card
+          "h-full flex flex-col rounded-2xl bg-bg-subtle overflow-hidden",
+          className
+        )}
+      >
+        <header className="flex items-center justify-between px-5 pt-3.5 pb-2.5 shrink-0">
+          <div className="flex items-center gap-2 text-fg-muted text-sm">
+            {panelIcon}
+            <span>{title}</span>
+          </div>
+          <button
+            onClick={() => setExpanded(true)}
+            aria-label={`Expand ${title}`}
+            className="text-fg-subtle hover:text-fg-muted transition-colors p-1 rounded"
+          >
+            <Maximize2 size={13} strokeWidth={1.75} />
+          </button>
+        </header>
+
+        {/* Inner floating card — equal inset on all sides, lighter background */}
+        <div className="flex-1 min-h-0 px-2 pb-2">
+          <div className="h-full rounded-xl bg-bg-elevated overflow-hidden flex flex-col shadow-sm">
+            {flush ? (
+              <div className="flex-1 min-h-0">{children}</div>
+            ) : (
+              <div className="flex-1 min-h-0 overflow-y-auto p-5">{children}</div>
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <Modal
+        open={expanded}
+        onClose={() => setExpanded(false)}
+        title={title}
+        icon={panelIcon}
+      >
+        {children}
+      </Modal>
+    </>
   );
 }
 
 function PanelIcon() {
-  // Subtle stacked-paper glyph that reads as "list / collection"
   return (
     <svg
       width="16"

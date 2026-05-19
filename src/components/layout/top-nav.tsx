@@ -32,9 +32,9 @@ export function TopNav() {
 
   return (
     <header className="px-6 pt-4 pb-1 shrink-0">
-      <div className="flex items-center justify-between gap-4">
+      <div className="grid grid-cols-3 items-center gap-4">
         {/* Left cluster — window dots + Today pill + nav arrows + search */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 justify-self-start">
           <WindowDots />
 
           <button className="pill px-5 py-2 text-sm hover:bg-bg-hover transition-colors">
@@ -56,7 +56,7 @@ export function TopNav() {
 
         {/* Center cluster — route switcher */}
         <nav
-          className="pill flex items-center gap-1 px-2 py-1.5"
+          className="pill flex items-center gap-1 px-2 py-1.5 justify-self-center"
           aria-label="Main navigation"
         >
           {routes.map((route) => {
@@ -83,7 +83,7 @@ export function TopNav() {
         </nav>
 
         {/* Right cluster — create + theme + avatar */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 justify-self-end">
           <IconButton aria-label="Create new">
             <Plus size={18} strokeWidth={1.5} />
           </IconButton>
