@@ -11,11 +11,12 @@ import {
   Plus,
   MoonStar,
   Sun,
-  User,
 } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { TodayButton } from "./today-button";
+import { ProfileMenu } from "./profile-menu";
 
 type Route = "home" | "calendar" | "inbox" | "archive";
 
@@ -37,9 +38,7 @@ export function TopNav() {
         <div className="flex items-center gap-4 justify-self-start">
           <WindowDots />
 
-          <button className="pill px-5 py-2 text-sm hover:bg-bg-hover transition-colors">
-            Today
-          </button>
+          <TodayButton />
 
           <div className="flex items-center gap-1 text-fg-subtle">
             <IconButton aria-label="Previous day">
@@ -94,12 +93,7 @@ export function TopNav() {
               <Sun size={18} strokeWidth={1.5} />
             )}
           </IconButton>
-          <button
-            className="w-9 h-9 rounded-full bg-bg-hover flex items-center justify-center hover:bg-fg-faint transition-colors"
-            aria-label="Account"
-          >
-            <User size={16} strokeWidth={1.5} className="text-fg-muted" />
-          </button>
+          <ProfileMenu />
         </div>
       </div>
     </header>

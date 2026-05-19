@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ListTodo } from "lucide-react";
 import { Panel } from "./panel";
 import type { Todo } from "@/lib/types";
 import { mockTodos } from "@/lib/mock-data";
@@ -32,7 +33,10 @@ export function TodosPanel() {
   };
 
   return (
-    <Panel title="Tasks">
+    <Panel
+      title="Tasks"
+      icon={<ListTodo size={15} strokeWidth={1.5} className="text-fg-faint" />}
+    >
       <div className="space-y-4">
         {todos.map((todo) => (
           <TodoRow key={todo.id} todo={todo} onToggle={toggleTodo} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { NotebookPen } from "lucide-react";
 import { Panel } from "./panel";
 import { mockNote } from "@/lib/mock-data";
 
@@ -18,7 +19,11 @@ export function NotesPanel() {
   }, [content]);
 
   return (
-    <Panel title="Notes" flush>
+    <Panel
+      title="Notes"
+      flush
+      icon={<NotebookPen size={15} strokeWidth={1.5} className="text-fg-faint" />}
+    >
       <div className="relative h-full">
         <textarea
           ref={textareaRef}

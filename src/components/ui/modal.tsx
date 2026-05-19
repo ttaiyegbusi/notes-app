@@ -47,9 +47,9 @@ export function Modal({ open, onClose, title, icon, children }: ModalProps) {
         tabIndex={-1}
       />
 
-      {/* Modal panel — 50vw × 50vh, capped for very large screens */}
+      {/* Modal panel — 40vw × 60vh, capped for very large screens */}
       <div
-        className="relative w-[50vw] h-[50vh] max-w-[900px] max-h-[700px] min-w-[480px] min-h-[400px] rounded-2xl bg-bg-subtle flex flex-col overflow-hidden shadow-2xl"
+        className="relative w-[40vw] h-[60vh] max-w-[720px] max-h-[800px] min-w-[420px] min-h-[480px] rounded-2xl bg-bg-subtle flex flex-col overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header — same chrome as panels */}
